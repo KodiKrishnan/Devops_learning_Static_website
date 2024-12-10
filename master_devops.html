@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced DevOps Tutorial</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #0f172a;
+            --text-color: #e2e8f0;
+            --code-background: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 1rem 4rem;
+            background: linear-gradient(to bottom, var(--background-color), #1e293b);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: var(--code-background);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'Fira Code', monospace;
+            color: #a5b4fc;
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Progress Tracker */
+        .progress-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(30, 41, 59, 0.95);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 6px;
+            background: #334155;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">DevOps Master</div>
+            <div class="nav-links">
+                <a href="#fundamentals">Fundamentals</a>
+                <a href="#ci-cd">CI/CD</a>
+                <a href="#containers">Containers</a>
+                <a href="#kubernetes">Kubernetes</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Master Modern DevOps</h1>
+        <p>Learn enterprise-grade DevOps practices, tools, and methodologies through hands-on tutorials and real-world examples.</p>
+    </section>
+
+    <main class="container">
+        <section id="fundamentals">
+            <h2>DevOps Fundamentals</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Version Control with Git</h3>
+                    <p>Master Git workflows and best practices for team collaboration.</p>
+                    <div class="code-block">
+                        <pre>
+# Initialize a new repository
+git init
+
+# Create a new feature branch
+git checkout -b feature/new-feature
+
+# Stage and commit changes
+git add .
+git commit -m "feat: add new feature"</pre>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Infrastructure as Code</h3>
+                    <p>Learn Terraform and AWS CloudFormation for infrastructure automation.</p>
+                    <div class="code-block">
+                        <pre>
+# Terraform example
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  
+  tags = {
+    Name = "DevOps-Tutorial"
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ci-cd">
+            <h2>Continuous Integration & Deployment</h2>
+            <div class="interactive-demo">
+                <h3>Jenkins Pipeline Example</h3>
+                <div class="code-block">
+                    <pre>
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm run test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './deploy.sh'
+            }
+        }
+    }
+}</pre>
+                </div>
+                <button class="btn" onclick="showPipelineSteps()">Run Pipeline</button>
+            </div>
+        </section>
+
+        <section id="containers">
+            <h2>Container Orchestration</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Docker Fundamentals</h3>
+                    <div class="code-block">
+                        <pre>
+# Dockerfile example
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]</pre>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Docker Compose</h3>
+                    <div class="code-block">
+                        <pre>
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo:latest
+    volumes:
+      - db-data:/data/db
+volumes:
+  db-data:</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kubernetes">
+            <h2>Kubernetes in Production</h2>
+            <div class="interactive-demo">
+                <h3>Kubernetes Deployment</h3>
+                <div class="code-block">
+                    <pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: nodejs
+        image: nodejs-app:1.0
+        ports:
+        - containerPort: 3000</pre>
+                </div>
+                <button class="btn" onclick="showK8sStatus()">Check Status</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="progress-container">
+        <p>Course Progress</p>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking
+        const sections = document.querySelectorAll('section');
+        const progressBar = document.querySelector('.progress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / fullHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        // Interactive demo functions
+        function showPipelineSteps() {
+            alert('Pipeline started! Check the console for progress.');
+            console.log('Running build stage...');
+            setTimeout(() => console.log('Build completed successfully!'), 1000);
+            setTimeout(() => console.log('Running tests...'), 2000);
+            setTimeout(() => console.log('Tests passed!'), 3000);
+            setTimeout(() => console.log('Deploying to production...'), 4000);
+            setTimeout(() => console.log('Deployment successful!'), 5000);
+        }
+
+        function showK8sStatus() {
+            alert('Checking Kubernetes deployment status...');
+            console.log('Fetching pod status...');
+            setTimeout(() => console.log('All pods are running!'), 1000);
+            setTimeout(() => console.log('Service is healthy'), 2000);
+            setTimeout(() => console.log('Deployment is ready!'), 3000);
+        }
+    </script>
+</body>
+</html>
